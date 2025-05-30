@@ -1,0 +1,73 @@
+
+{% extends 'base.html' %}
+{% block content %}
+<div class="container py-5">
+    <h1 class="mb-4">メッセージ・アラート UI</h1>
+
+    <!-- ✅ 成功・エラー・警告アラート -->
+    <section class="mb-5">
+        <h2 class="h5">基本アラート</h2>
+        <div class="alert alert-success" role="alert">✅ 処理が成功しました！</div>
+        <div class="alert alert-danger" role="alert">❌ エラーが発生しました！</div>
+        <div class="alert alert-warning" role="alert">⚠ 注意が必要です！</div>
+        <div class="alert alert-info" role="alert">ℹ 補足情報のお知らせです。</div>
+        <div class="alert alert-primary alert-dismissible fade show" role="alert">
+            📢 閉じることもできる通知です。
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    </section>
+
+    <!-- ✅ トースト通知 -->
+    <section class="mb-5">
+        <h2 class="h5">トースト通知（非侵入型）</h2>
+        <button class="btn btn-outline-primary" onclick="showToast()">通知を表示</button>
+        <div class="toast-container position-fixed top-0 end-0 p-3">
+            <div id="msgToast" class="toast text-bg-primary border-0" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="d-flex">
+                    <div class="toast-body">📢 これはトースト通知です（画面右上）</div>
+                    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="閉じる"></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ✅ ステータスメッセージ -->
+    <section class="mb-5">
+        <h2 class="h5">ステータスメッセージ（読み込み状態など）</h2>
+        <button class="btn btn-outline-secondary" onclick="toggleLoading()">読み込みトグル</button>
+        <div id="statusBox" class="mt-3 d-none text-center">
+            <div class="spinner-border text-primary" role="status"></div>
+            <p class="mt-2">読み込み中です。しばらくお待ちください…</p>
+        </div>
+    </section>
+
+    <!-- ✅ 上級：固定アラートバー -->
+    <section class="mb-5">
+        <h2 class="h5">固定通知バー（画面上部に固定）</h2>
+        <button class="btn btn-warning" onclick="showBanner()">通知バーを表示</button>
+        <div id="alertBanner" class="alert alert-info fixed-top text-center rounded-0 d-none" role="alert">
+            🚀 これは画面上部に表示される固定バナー通知です。
+        </div>
+    </section>
+</div>
+
+<script>
+function showToast() {
+    const toast = new bootstrap.Toast(document.getElementById('msgToast'));
+    toast.show();
+}
+
+function toggleLoading() {
+    const box = document.getElementById('statusBox');
+    box.classList.toggle('d-none');
+}
+
+function showBanner() {
+    const banner = document.getElementById('alertBanner');
+    banner.classList.remove('d-none');
+    setTimeout(() => {
+        banner.classList.add('d-none');
+    }, 3000);
+}
+</script>
+{% endblock %}

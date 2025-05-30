@@ -1,0 +1,217 @@
+{% extends "base.html" %}
+{% block title %}フォーム・入力UIサンプル{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <h1 class="mb-4">フォーム・入力 UI サンプル</h1>
+
+    <form>
+        <!-- テキスト・メール・パスワード・日付 -->
+        <div class="mb-4">
+            <label class="form-label">名前</label>
+            <input type="text" class="form-control" placeholder="例：山田 太郎">
+        </div>
+        <div class="mb-4">
+            <label class="form-label">メールアドレス</label>
+            <input type="email" class="form-control" placeholder="example@example.com">
+        </div>
+        <div class="mb-4">
+            <label class="form-label">パスワード</label>
+            <input type="password" class="form-control">
+        </div>
+        <div class="mb-4">
+            <label class="form-label">生年月日</label>
+            <input type="date" class="form-control">
+        </div>
+
+        <!-- セレクトボックス -->
+        <div class="mb-4">
+            <label class="form-label">都道府県</label>
+            <select class="form-select">
+                <option>選択してください</option>
+                <option>東京都</option>
+                <option>大阪府</option>
+                <option>北海道</option>
+            </select>
+        </div>
+
+        <!-- チェックボックス・ラジオボタン・スイッチ -->
+        <div class="mb-4">
+            <label class="form-label d-block">性別</label>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="gender" id="male" value="male">
+                <label class="form-check-label" for="male">男性</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="gender" id="female" value="female">
+                <label class="form-check-label" for="female">女性</label>
+            </div>
+        </div>
+        <div class="mb-4">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="agree">
+                <label class="form-check-label" for="agree">
+                    利用規約に同意する
+                </label>
+            </div>
+        </div>
+        <div class="mb-4">
+            <label class="form-label d-block">通知</label>
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                <label class="form-check-label" for="flexSwitchCheckDefault">ON/OFF 切替</label>
+            </div>
+        </div>
+
+        <!-- テキストエリア -->
+        <div class="mb-4">
+            <label class="form-label">メッセージ</label>
+            <textarea class="form-control" rows="4" placeholder="ご意見・ご要望などを入力してください"></textarea>
+        </div>
+
+        <!-- スライダー -->
+        <div class="mb-4">
+            <label class="form-label">満足度（1〜10）</label>
+            <input type="range" class="form-range" min="1" max="10" step="1">
+        </div>
+
+        <!-- ファイルアップロード -->
+        <div class="mb-4">
+            <label class="form-label">ファイルアップロード</label>
+            <input class="form-control" type="file" accept=".pdf,.jpg,.png">
+        </div>
+
+        <!-- 入力バリデーション -->
+        <div class="mb-4">
+            <label class="form-label">ユーザーID（英数字）</label>
+            <input type="text" class="form-control is-invalid" value="abc@123">
+            <div class="invalid-feedback">英数字のみを入力してください。</div>
+        </div>
+
+        <!-- ステップ入力 -->
+        <div class="mb-4">
+            <label class="form-label">ステップ入力例（段階表示）</label>
+            <ul class="list-group">
+                <li class="list-group-item active">Step 1: 情報入力</li>
+                <li class="list-group-item">Step 2: 内容確認</li>
+                <li class="list-group-item">Step 3: 完了</li>
+            </ul>
+        </div>
+
+        <!-- 送信ボタン -->
+        <button type="submit" class="btn btn-primary">送信</button>
+
+        <!-- ✅ 入力グループ（検索） -->
+        <div class="mb-4">
+            <label class="form-label">検索</label>
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="検索キーワード">
+                <button class="btn btn-outline-secondary" type="button">検索</button>
+            </div>
+        </div>
+
+        <!-- ✅ 複数ファイルアップロード -->
+        <div class="mb-4">
+            <label class="form-label">画像アップロード（複数）</label>
+            <input class="form-control" type="file" multiple accept="image/*">
+        </div>
+
+        <!-- ✅ datalist によるオートコンプリート -->
+        <div class="mb-4">
+            <label class="form-label">フルーツ名（オートコンプリート）</label>
+            <input class="form-control" list="fruitOptions" placeholder="例：りんご">
+            <datalist id="fruitOptions">
+                <option value="りんご">
+                <option value="バナナ">
+                <option value="ぶどう">
+                <option value="メロン">
+            </datalist>
+        </div>
+
+        <!-- ✅ datetime-local 入力 -->
+        <div class="mb-4">
+            <label class="form-label">予約日時</label>
+            <input type="datetime-local" class="form-control">
+        </div>
+
+        <!-- ✅ 電話番号マスク（説明付き） -->
+        <div class="mb-4">
+            <label class="form-label">電話番号（例：090-1234-5678）</label>
+            <input type="tel" class="form-control" pattern="\d{3}-\d{4}-\d{4}" placeholder="090-XXXX-YYYY">
+            <div class="form-text">ハイフンを含めた形式で入力してください</div>
+        </div>
+
+        <!-- ✅ リッチテキストエディタ風（textarea） -->
+        <div class="mb-4">
+            <label class="form-label">詳細内容（装飾可）</label>
+            <textarea class="form-control" rows="5" placeholder="例：**太字** や *斜体* などを含む説明..."></textarea>
+            <div class="form-text">Markdown等による装飾が可能な場合を想定</div>
+        </div>
+
+
+        <!-- ✅ パスワード表示切替 -->
+        <div class="mb-4">
+            <label class="form-label">パスワード（表示切替）</label>
+            <div class="input-group">
+                <input type="password" class="form-control" id="togglePasswordInput">
+                <button class="btn btn-outline-secondary" type="button" onclick="togglePassword()">👁️</button>
+            </div>
+            <div class="form-text">目のアイコンをクリックでパスワード表示切替</div>
+        </div>
+
+        <!-- ✅ コピー可能な入力欄 -->
+        <div class="mb-4">
+            <label class="form-label">招待コード</label>
+            <div class="input-group">
+                <input type="text" class="form-control" id="inviteCode" value="ABC123" readonly>
+                <button class="btn btn-outline-primary" type="button" onclick="copyToClipboard()">コピー</button>
+            </div>
+        </div>
+
+        <!-- ✅ 入力制限（文字数カウント） -->
+        <div class="mb-4">
+            <label class="form-label">自己紹介（最大100文字）</label>
+            <textarea class="form-control" id="bioTextarea" maxlength="100" rows="3" oninput="countChars()"></textarea>
+            <div class="form-text"><span id="charCount">0</span>/100 文字</div>
+        </div>
+
+        <!-- ✅ ARIAラベル付き入力 -->
+        <div class="mb-4">
+            <label for="ariaExample" class="form-label">ニックネーム</label>
+            <input type="text" class="form-control" id="ariaExample" aria-label="ニックネーム入力欄">
+            <div class="form-text text-muted">
+                ※この入力欄はスクリーンリーダー対応（読み上げ機能）に対応しています
+            </div>
+        </div>
+
+
+        <!-- ✅ リセットボタン -->
+        <div class="mb-4">
+            <button type="reset" class="btn btn-outline-danger">リセット</button>
+        </div>
+
+        <!-- スクリプト -->
+        <script>
+            function togglePassword() {
+                const input = document.getElementById("togglePasswordInput");
+                input.type = input.type === "password" ? "text" : "password";
+            }
+
+            function copyToClipboard() {
+                const input = document.getElementById("inviteCode");
+                input.select();
+                input.setSelectionRange(0, 99999);
+                document.execCommand("copy");
+                alert("コピーしました: " + input.value);
+            }
+
+            function countChars() {
+                const textarea = document.getElementById("bioTextarea");
+                const count = document.getElementById("charCount");
+                count.innerText = textarea.value.length;
+            }
+        </script>
+
+    </form>
+</div>
+{% endblock %}

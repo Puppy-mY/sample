@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block title %}UIテンプレート集（トップ）{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <h1 class="mb-4">UIテンプレート集（トップ）</h1>
+
+    <!-- レイアウト・構造系 -->
+    <h2 class="h5 mt-4">レイアウト・構造系</h2>
+    <a href="{{ url_for('layout_ui') }}" class="btn btn-outline-primary btn-sm mb-1">レイアウトUI</a>
+
+    <!-- ボタン・リンク系 -->
+    <h2 class="h5 mt-4">ボタン・リンク系</h2>
+    <a href="{{ url_for('buttons') }}" class="btn btn-outline-primary btn-sm mb-1">ボタンUI</a>
+
+    <!-- ナビゲーション系 -->
+    <h2 class="h5 mt-4">ナビゲーション系</h2>
+    <a href="{{ url_for('navigation') }}" class="btn btn-outline-primary btn-sm mb-1">ナビゲーションUI</a>
+
+
+    <!-- フォーム・入力UI -->
+    <h2 class="h5 mt-4">フォーム・入力UI</h2>
+    <a href="{{ url_for('form_ui') }}" class="btn btn-outline-primary btn-sm mb-1">フォームUI</a>
+
+
+    <!-- 表・リスト系 -->
+    <h2 class="h5 mt-4">表・リスト系</h2>
+    <a href="{{ url_for('table_list') }}" class="btn btn-outline-primary btn-sm mb-1">表・リストUI</a>
+
+
+    <!-- 情報表示・カード・視覚部品 -->
+    <h2 class="h5 mt-4">情報表示・カード・視覚部品</h2>
+    <a href="{{ url_for('info_card_ui') }}" class="btn btn-outline-primary btn-sm mb-1">情報表示・カードUI</a>
+
+
+
+    <!-- モーダル・ポップアップ系 -->
+    <h2 class="h5 mt-4">モーダル・ポップアップ系</h2>
+    <a href="{{ url_for('modal_ui') }}" class="btn btn-outline-primary btn-sm mb-1">モーダル・ポップアップUI</a>
+
+
+    <!-- メッセージ・アラート系 -->
+    <h2 class="h5 mt-4">メッセージ・アラート系</h2>
+    <a href="{{ url_for('message_alert') }}" class="btn btn-outline-primary btn-sm mb-1">
+        メッセージ・アラート UI
+    </a>
+
+
+    <!-- 補助UI／特殊UI -->
+    <h2 class="h5 mt-4">補助UI／特殊UI</h2>
+    <a href="{{ url_for('special_ui') }}" class="btn btn-outline-primary btn-sm mb-1">
+        補助UI／特殊UI
+    </a>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,236 @@
+{% extends "base.html" %}
+{% block title %}ボタンUIサンプル（カテゴリ整理）{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <h1 class="mb-5">ボタンUIテンプレート集（カテゴリ別）</h1>
+
+    <!-- 🔵 基本スタイル系 -->
+    <section id="basic-section" class="mb-5">
+        <h2 class="h4">基本スタイル・色・サイズ</h2>
+
+        <!-- 1. 基本ボタン -->
+        <h5 class="mt-4">基本ボタン</h5>
+        <button class="btn btn-primary">Primary</button>
+        <button class="btn btn-secondary">Secondary</button>
+        <button class="btn btn-success">Success</button>
+        <button class="btn btn-danger">Danger</button>
+        <button class="btn btn-warning">Warning</button>
+        <button class="btn btn-info">Info</button>
+        <button class="btn btn-light">Light</button>
+        <button class="btn btn-dark">Dark</button>
+
+        <!-- 2. アウトラインボタン -->
+        <h5 class="mt-4">アウトラインボタン</h5>
+        <button class="btn btn-outline-primary">Primary</button>
+        <button class="btn btn-outline-success">Success</button>
+        <button class="btn btn-outline-danger">Danger</button>
+        <button class="btn btn-outline-warning">Warning</button>
+
+        <!-- 3. サイズ違い -->
+        <h5 class="mt-4">サイズバリエーション</h5>
+        <button class="btn btn-primary btn-sm">Small</button>
+        <button class="btn btn-primary">Medium</button>
+        <button class="btn btn-primary btn-lg">Large</button>
+
+        <!-- 4. 角丸・シャドウ -->
+        <h5 class="mt-4">角丸・シャドウ</h5>
+        <button class="btn btn-success rounded-pill shadow-sm">丸くて影あり</button>
+        <button class="btn btn-outline-secondary rounded-0">角なし</button>
+    </section>
+
+    <!-- 🟨 状態・動作系 -->
+    <section id="state-section" class="mb-5">
+        <h2 class="h4">動作・状態付きボタン</h2>
+
+        <!-- 6. 無効・読み込み中 -->
+        <h5 class="mt-4">状態表示</h5>
+        <button class="btn btn-primary" disabled>送信不可</button>
+        <button class="btn btn-success" disabled>
+            <span class="spinner-border spinner-border-sm me-1"></span> 保存中...
+        </button>
+
+        <!-- 7. トグル -->
+        <h5 class="mt-4">トグルボタン</h5>
+        <button class="btn btn-outline-primary active" data-bs-toggle="button" aria-pressed="true">ON</button>
+        <button class="btn btn-outline-secondary" data-bs-toggle="button" aria-pressed="false">OFF</button>
+
+        <!-- アクション完了ボタン -->
+        <h5 class="mt-4">アクションボタン</h5>
+        <button id="actionBtn" class="btn btn-primary" onclick="completeAction(this)">
+            <i class="fas fa-paper-plane me-1"></i> 送信
+        </button>
+
+        <!-- 削除確認 -->
+        <h5 class="mt-4">削除確認ボタン</h5>
+        <button class="btn btn-danger" onclick="if(confirm('本当に削除しますか？')) alert('削除されました');">
+            <i class="fas fa-trash"></i> 削除
+        </button>
+    </section>
+
+    <!-- 🟩 アイコン・視覚拡張系 -->
+    <section id="icon-section" class="mb-5">
+        <h2 class="h4">アイコン付き・視覚拡張</h2>
+
+        <!-- 5. アイコン付き -->
+        <h5 class="mt-4">アイコン付き</h5>
+        <button class="btn btn-info"><i class="fas fa-download me-1"></i> ダウンロード</button>
+        <button class="btn btn-danger"><i class="fas fa-trash-alt me-1"></i> 削除</button>
+        <button class="btn btn-warning"><i class="fas fa-edit me-1"></i> 編集</button>
+
+        <!-- 保存完了ボタン -->
+        <h5 class="mt-4">複合アイコンボタン</h5>
+        <button class="btn btn-success">
+            <i class="fas fa-save me-1"></i> 保存 <i class="fas fa-check ms-1"></i>
+        </button>
+
+        <!-- 通知付き -->
+        <h5 class="mt-4">通知バッジ付き</h5>
+        <button class="btn btn-outline-primary position-relative">
+            メッセージ
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                9+
+                <span class="visually-hidden">未読メッセージ</span>
+            </span>
+        </button>
+    </section>
+
+    <!-- 🕺✨ 特殊視覚表現 -->
+    <section id="effect-section" class="mb-5">
+        <h2 class="h4">視覚効果・エフェクト</h2>
+
+        <!-- 10. グラデーション -->
+        <h5 class="mt-4">グラデーションボタン</h5>
+        <button class="btn btn-gradient px-4 py-2">グラデーション</button>
+
+        <!-- 13. CTA -->
+        <h5 class="mt-4">コールトゥアクション</h5>
+        <button class="btn btn-cta px-4 py-2">今すぐ申し込む</button>
+
+        <!-- バウンス -->
+        <h5 class="mt-4">バウンスアニメーション</h5>
+        <button class="btn btn-warning btn-bounce">
+            <i class="fas fa-bolt me-1"></i> 注目！
+        </button>
+    </section>
+
+    <!-- 🔹 レイアウト・配置 -->
+    <section id="layout-section" class="mb-5">
+        <h2 class="h4">レイアウト・配置</h2>
+
+        <!-- 8. ブロック -->
+        <h5 class="mt-4">全幅ボタン</h5>
+        <button class="btn btn-primary w-100 mb-2">登録する</button>
+        <button class="btn btn-outline-danger w-100">キャンセル</button>
+
+        <!-- 12. ボタングループ -->
+        <h5 class="mt-4">ボタングループ</h5>
+        <div class="btn-group" role="group">
+            <button class="btn btn-outline-primary">前へ</button>
+            <button class="btn btn-outline-secondary">現在</button>
+            <button class="btn btn-outline-primary">次へ</button>
+        </div>
+
+        <!-- 9. リンク風 -->
+        <h5 class="mt-4">リンク風ボタン</h5>
+        <button class="btn btn-link">こちらをクリック</button>
+
+        <!-- トップへ戻る -->
+        <h5 class="mt-4">ページトップボタン</h5>
+        <button onclick="window.scrollTo({top: 0, behavior: 'smooth'});"
+            class="btn btn-dark position-fixed bottom-0 end-0 m-4 shadow rounded-circle"
+            style="width: 50px; height: 50px;">
+            <i class="fas fa-arrow-up"></i>
+        </button>
+
+        <!-- カテゴリジャンプナビ（左下固定） -->
+        <div class="position-fixed bottom-0 start-0 m-3 d-flex flex-column gap-2" style="z-index: 1030;">
+            <a href="#basic-section"
+                class="btn btn-outline-primary rounded-circle shadow text-center d-flex flex-column justify-content-center align-items-center"
+                style="width: 60px; height: 60px; font-size: 15px; line-height: 1.1;">
+                <span>基本</span>
+            </a>
+            <a href="#state-section"
+                class="btn btn-outline-success rounded-circle shadow text-center d-flex flex-column justify-content-center align-items-center"
+                style="width: 60px; height: 60px; font-size: 10px; line-height: 1.1;">
+                <i class="fas fa-toggle-on"></i>
+                <span>状態</span>
+            </a>
+            <a href="#icon-section"
+                class="btn btn-outline-info rounded-circle shadow text-center d-flex flex-column justify-content-center align-items-center"
+                style="width: 60px; height: 60px; font-size: 11px; line-height: 1.1;">
+                <span>アイコン<br>付き</span>
+            </a>
+            <a href="#effect-section"
+                class="btn btn-outline-warning rounded-circle shadow text-center d-flex justify-content-center align-items-center"
+                style="width: 60px; height: 60px; font-size: 8px;">
+                <span>視覚効果</span>
+            </a>
+
+            <a href="#layout-section"
+                class="btn btn-outline-dark rounded-circle shadow text-center d-flex flex-column justify-content-center align-items-center"
+                style="width: 60px; height: 60px; font-size: 15px; line-height: 1.1;">
+                <span>配置<br>構成</span>
+            </a>
+        </div>
+
+
+    </section>
+</div>
+
+<!-- スタイル追加 -->
+<style>
+    .btn-gradient {
+        background: linear-gradient(45deg, #007bff, #00c6ff);
+        color: white;
+        border: none;
+    }
+
+    .btn-gradient:hover {
+        opacity: 0.85;
+    }
+
+    .btn-cta {
+        background-color: #ff5722;
+        color: white;
+        animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+        0% {
+            box-shadow: 0 0 0 0 rgba(255, 87, 34, 0.5);
+        }
+
+        70% {
+            box-shadow: 0 0 0 10px rgba(255, 87, 34, 0);
+        }
+
+        100% {
+            box-shadow: 0 0 0 0 rgba(255, 87, 34, 0);
+        }
+    }
+
+    .btn-bounce {
+        transition: transform 0.2s;
+    }
+
+    .btn-bounce:hover {
+        transform: scale(1.1);
+    }
+</style>
+
+<!-- スクリプト -->
+<script>
+    function completeAction(btn) {
+        btn.disabled = true;
+        btn.innerHTML = '<i class="fas fa-check-circle me-1"></i> 完了しました';
+        btn.classList.remove('btn-primary');
+        btn.classList.add('btn-success');
+    }
+
+
+    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+    tooltipTriggerList.forEach(el => new bootstrap.Tooltip(el))
+
+</script>
+{% endblock %}

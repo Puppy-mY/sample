@@ -1,0 +1,90 @@
+
+{% extends 'base.html' %}
+{% block content %}
+<div class="container py-5">
+    <h1 class="mb-4">レイアウト構造・グリッドUI</h1>
+
+    <!-- ✅ コンテナ -->
+    <section class="mb-5">
+        <h2 class="h5">コンテナ</h2>
+        <div class="container bg-light border p-4">
+            <p>このエリアは最大幅が決まっており、画面中央に配置されます。一般的なWebページの本文に使われるレイアウトです。</p>
+        </div>
+        <div class="container-fluid px-0 mt-3">
+            <div class="bg-success text-white p-4">全幅セクション（左右余白なし）</div>
+        </div>
+        <div class="container bg-white border p-4 mt-3">
+            <div class="row">
+                <div class="col-md-6 bg-light p-3 text-center">左半分</div>
+                <div class="col-md-6 bg-secondary text-white p-3 text-center">右半分</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ✅ カラム構成 -->
+    <section class="mb-5">
+        <h2 class="h5">2カラム / 3カラム構成</h2>
+        <div class="row">
+            <div class="col-md-3 bg-light p-3">
+                <h5>メニュー</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#">リンク1</a></li>
+                    <li><a href="#">リンク2</a></li>
+                </ul>
+            </div>
+            <div class="col-md-9 p-3">
+                <h2>メイン内容</h2>
+                <p>こちらは右側のメインカラムです。主なコンテンツを表示するエリアです。</p>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-md-3 bg-light p-3">左カラム</div>
+            <div class="col-md-6 p-3">メインカラム</div>
+            <div class="col-md-3 bg-light p-3">右カラム</div>
+        </div>
+    </section>
+
+    <!-- ✅ グリッド -->
+    <section class="mb-5">
+        <h2 class="h5">グリッド構成</h2>
+        <div class="row mb-3"><div class="col bg-light border p-3 text-center">col-12</div></div>
+        <div class="row mb-3">
+            <div class="col-md-6 bg-primary text-white p-3 text-center">col-md-6</div>
+            <div class="col-md-6 bg-secondary text-white p-3 text-center">col-md-6</div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-4 bg-success text-white p-3 text-center">col-md-4</div>
+            <div class="col-md-4 bg-warning text-dark p-3 text-center">col-md-4</div>
+            <div class="col-md-4 bg-info text-white p-3 text-center">col-md-4</div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-3 bg-dark text-white p-3 text-center">col-3</div>
+            <div class="col-9 bg-light border p-3 text-center">col-9</div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-6 col-md-4 col-lg-2 bg-danger text-white p-2 text-center">col-6 / col-md-4 / col-lg-2</div>
+            <div class="col-6 col-md-8 col-lg-10 bg-light border p-2 text-center">col-6 / col-md-8 / col-lg-10</div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 offset-md-3 bg-info text-white text-center p-3">中央寄せ</div>
+        </div>
+    </section>
+
+    <!-- ✅ 固定レイアウト -->
+    <section class="mb-5">
+        <h2 class="h5">固定ヘッダー・フッター</h2>
+        <p>スクロールしても常に表示される固定バー</p>
+        <nav class="navbar navbar-dark bg-dark fixed-top">
+            <div class="container-fluid"><span class="navbar-brand">固定ヘッダー</span></div>
+        </nav>
+        <div style="padding-top: 70px; padding-bottom: 70px;">
+            <div class="my-5">
+                {% for i in range(10) %}
+                <p>ダミーコンテンツ {{ i + 1 }}</p>
+                {% endfor %}
+            </div>
+        </div>
+        <footer class="bg-secondary text-white text-center py-2 fixed-bottom">固定フッター</footer>
+    </section>
+</div>
+{% endblock %}

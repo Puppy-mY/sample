@@ -1,0 +1,490 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container py-5">
+    <h1 class="mb-4">モーダル・ポップアップ UI</h1>
+    <div class="container py-5">
+        <h1 class="mb-4">モーダル・ポップアップ UI</h1>
+
+        <!-- ✅ 通知モーダル -->
+        <section class="mb-5">
+            <h2 class="h5">通知モーダル</h2>
+            <p>操作完了のフィードバックや確認メッセージを表示するためのシンプルなモーダルです。</p>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#notifyModal">
+                通知を表示
+            </button>
+
+            <div class="modal fade" id="notifyModal" tabindex="-1" aria-labelledby="notifyModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="notifyModalLabel">保存完了</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">
+                            データが正常に保存されました。
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">閉じる</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ✅ フォーム付きモーダル -->
+        <section class="mb-5">
+            <h2 class="h5">フォーム付きモーダル</h2>
+            <p>新規作成・編集用のフォームをモーダルで開き、ユーザー操作を補助します。</p>
+            <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#formModal">
+                新規追加
+            </button>
+
+            <div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <form class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="formModalLabel">新規追加フォーム</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="mb-3">
+                                <label for="itemName" class="form-label">名前</label>
+                                <input type="text" class="form-control" id="itemName">
+                            </div>
+                            <div class="mb-3">
+                                <label for="itemDetail" class="form-label">詳細</label>
+                                <textarea class="form-control" id="itemDetail" rows="3"></textarea>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">キャンセル</button>
+                            <button type="submit" class="btn btn-primary">保存</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- ✅ 削除確認ダイアログ -->
+        <section class="mb-5">
+            <h2 class="h5">削除確認ダイアログ</h2>
+            <p>操作の取り消しができない場合にユーザーに確認を求めるモーダルです。</p>
+            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal">
+                削除確認
+            </button>
+
+            <div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header bg-danger text-white">
+                            <h5 class="modal-title" id="confirmDeleteLabel">本当に削除しますか？</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">
+                            この操作は元に戻せません。データを完全に削除します。
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">キャンセル</button>
+                            <button type="button" class="btn btn-danger">削除する</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ✅ 全画面モーダル -->
+        <section class="mb-5">
+            <h2 class="h5">全画面モーダル</h2>
+            <p>写真やビデオビュー、詳細情報の展開など、スペースが必要な場面に使います。</p>
+            <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#fullscreenModal">
+                フルスクリーンで表示
+            </button>
+
+            <div class="modal fade" id="fullscreenModal" tabindex="-1" aria-labelledby="fullscreenModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-fullscreen">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="fullscreenModalLabel">全画面モーダル</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">
+                            写真や長文、拡大コンテンツなどの表示に最適です。
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">閉じる</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <!-- ✅ 自動表示モーダル -->
+    <section class="mb-5">
+        <h2 class="h5">自動表示モーダル</h2>
+        <p>ページロード時に自動で表示されるモーダルです。初回アクセスや重要なお知らせなどに使います。</p>
+        <div class="modal fade" id="autoShowModal" tabindex="-1" aria-labelledby="autoShowModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="autoShowModalLabel">ようこそ！</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">初回アクセスありがとうございます。</div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">閉じる</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ✅ ステップモーダル -->
+    <section class="mb-5">
+        <h2 class="h5">ステップモーダル</h2>
+        <p>段階的に進むステップUI。会員登録や注文フローに最適です。</p>
+        <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#stepModal">ステップ開始</button>
+        <div class="modal fade" id="stepModal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">ステップ1/2</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        ステップ1の入力です。
+                        <input class="form-control mt-2" placeholder="何か入力してください">
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" onclick="nextStep()">次へ</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ✅ タブ切替モーダル -->
+    <section class="mb-5">
+        <h2 class="h5">タブ付きモーダル</h2>
+        <p>ログインと登録など、複数の内容をタブで切り替えられます。</p>
+        <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#tabModal">タブモーダル</button>
+        <div class="modal fade" id="tabModal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <ul class="nav nav-tabs" id="tabContent" role="tablist">
+                            <li class="nav-item">
+                                <button class="nav-link active" id="login-tab" data-bs-toggle="tab"
+                                    data-bs-target="#login" type="button">ログイン</button>
+                            </li>
+                            <li class="nav-item">
+                                <button class="nav-link" id="register-tab" data-bs-toggle="tab"
+                                    data-bs-target="#register" type="button">登録</button>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tab-content p-3">
+                        <div class="tab-pane fade show active" id="login">
+                            <input class="form-control mb-2" placeholder="メールアドレス">
+                            <input class="form-control" placeholder="パスワード" type="password">
+                        </div>
+                        <div class="tab-pane fade" id="register">
+                            <input class="form-control mb-2" placeholder="名前">
+                            <input class="form-control" placeholder="メールアドレス">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" data-bs-dismiss="modal">閉じる</button>
+                        <button class="btn btn-primary">送信</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ✅ モーダル内メディア -->
+    <section class="mb-5">
+        <h2 class="h5">メディア表示モーダル</h2>
+        <p>モーダル内で画像や動画を拡大表示するレイアウトです。</p>
+        <button class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#mediaModal">画像を表示</button>
+        <div class="modal fade" id="mediaModal" tabindex="-1">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-body p-0">
+                        <img src="https://via.placeholder.com/800x400" class="img-fluid" alt="メディア">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const autoModal = new bootstrap.Modal(document.getElementById('autoShowModal'));
+            setTimeout(() => autoModal.show(), 500);  // 0.5秒後に表示
+        });
+
+        function nextStep() {
+            const modal = bootstrap.Modal.getInstance(document.getElementById('stepModal'));
+            modal.hide();
+            alert("ステップ2へ（ここに別モーダルまたは動作を追加可能）");
+        }
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const autoModal = new bootstrap.Modal(document.getElementById('autoShowModal'));
+
+            setTimeout(() => {
+                autoModal.show();
+            }, 500);
+
+            // モーダル閉じた後に状態を確実に戻す
+            document.getElementById('autoShowModal').addEventListener('hidden.bs.modal', () => {
+                document.body.classList.remove('modal-open');
+                document.body.style.overflow = '';
+                document.querySelectorAll('.modal-backdrop').forEach(el => el.remove());
+            });
+        });
+
+        function nextStep() {
+            const modal = bootstrap.Modal.getInstance(document.getElementById('stepModal'));
+            modal.hide();
+            alert("ステップ2へ（ここに別モーダルまたは動作を追加可能）");
+        }
+    </script>
+</div>
+
+<!-- ✅ ドラッグ可能モーダル -->
+<section class="mb-5">
+    <h2 class="h5">ドラッグ可能モーダル</h2>
+    <p>モーダルのヘッダーをドラッグして位置を自由に動かせるようにします。</p>
+    <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#draggableModal">表示</button>
+
+    <div class="modal fade" id="draggableModal" tabindex="-1">
+        <div class="modal-dialog" id="draggableDialog">
+            <div class="modal-content">
+                <div class="modal-header draggable">
+                    <h5 class="modal-title">ドラッグ可能</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    このモーダルはヘッダーをドラッグすることで移動可能です。
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ✅ 読み込み中表示モーダル -->
+<section class="mb-5">
+    <h2 class="h5">読み込み状態付きモーダル</h2>
+    <p>保存や送信中の状態をスピナーとともに表示します。</p>
+    <button class="btn btn-outline-success" onclick="showLoadingModal()">送信開始</button>
+
+    <div class="modal fade" id="loadingModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">送信中...</h5>
+                </div>
+                <div class="modal-body text-center">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">読み込み中...</span>
+                    </div>
+                    <p class="mt-3">サーバーに送信しています。しばらくお待ちください。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    #draggableDialog {
+        position: absolute;
+    }
+
+    .draggable {
+        cursor: move;
+    }
+</style>
+
+<script>
+    function showLoadingModal() {
+        const modal = new bootstrap.Modal(document.getElementById('loadingModal'));
+        modal.show();
+        setTimeout(() => {
+            modal.hide();
+            alert("送信が完了しました。");
+        }, 2000); // 2秒後に完了
+    }
+
+    // ドラッグ可能にするロジック
+    document.addEventListener('DOMContentLoaded', () => {
+        const header = document.querySelector('#draggableModal .draggable');
+        const dialog = document.getElementById('draggableDialog');
+        let offsetX, offsetY, isDragging = false;
+
+        header.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            const rect = dialog.getBoundingClientRect();
+            offsetX = e.clientX - rect.left;
+            offsetY = e.clientY - rect.top;
+            document.body.style.userSelect = 'none';
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            dialog.style.left = (e.clientX - offsetX) + 'px';
+            dialog.style.top = (e.clientY - offsetY) + 'px';
+        });
+
+        document.addEventListener('mouseup', () => {
+            isDragging = false;
+            document.body.style.userSelect = '';
+        });
+    });
+</script>
+
+
+<!-- ✅ トースト通知モーダル -->
+<section class="mb-5">
+    <h2 class="h5">トースト通知</h2>
+    <p>非侵入型の通知。右上に自動表示され、数秒で閉じます。</p>
+    <button class="btn btn-outline-info" onclick="showToast()">通知を表示</button>
+    <div class="toast-container position-fixed top-0 end-0 p-3">
+        <div id="liveToast" class="toast align-items-center text-bg-info border-0" role="alert" aria-live="assertive"
+            aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body">お知らせメッセージがここに表示されます。</div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ✅ トースト通知のユースケース -->
+<section class="mb-4">
+    <h6 class="text-muted">📌 トースト通知の使用例</h6>
+    <ul>
+        <li>✅ フォーム送信後に「保存しました！」を表示</li>
+        <li>📎 コピー完了など操作の成功通知</li>
+        <li>⚠ エラー通知（例：「ネットワークに接続できません」）</li>
+    </ul>
+</section>
+
+<!-- ✅ 2段階確認モーダル -->
+<section class="mb-5">
+    <h2 class="h5">2段階確認モーダル</h2>
+    <p>確認 → 最終確認の2段階で操作を確定します。</p>
+    <button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#confirmModal1">削除開始</button>
+
+    <div class="modal fade" id="confirmModal1" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">確認</h5>
+                </div>
+                <div class="modal-body">本当に削除しますか？</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" data-bs-dismiss="modal">キャンセル</button>
+                    <button class="btn btn-danger" onclick="nextConfirm()">はい</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="confirmModal2" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">最終確認</h5>
+                </div>
+                <div class="modal-body">これが最後の確認です。本当に削除しますか？</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" data-bs-dismiss="modal">戻る</button>
+                    <button class="btn btn-danger" onclick="finalDelete()">削除実行</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ✅ 非同期読込モーダル -->
+<section class="mb-5">
+    <h2 class="h5">非同期データ読込モーダル</h2>
+    <button class="btn btn-outline-primary" onclick="loadModalData()">データ読込モーダルを開く</button>
+    <div class="modal fade" id="ajaxModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">読み込み結果</h5>
+                </div>
+                <div class="modal-body" id="ajaxModalBody">読込中...</div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ✅ 非同期データ読込モーダルのユースケース -->
+<section class="mb-4">
+    <h6 class="text-muted">📌 非同期読込モーダルの使用例</h6>
+    <ul>
+        <li>🔍 リストから「詳細を見る」操作 → モーダルで取得＆表示</li>
+        <li>👤 ユーザー情報や商品の詳細をIDで取得して動的表示</li>
+        <li>📡 必要なときだけAPIから取得してUIに反映（軽量化）</li>
+    </ul>
+</section>
+
+<!-- ✅ スクロール可能モーダル -->
+<section class="mb-5">
+    <h2 class="h5">スクロール可能モーダル</h2>
+    <button class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#scrollableModal">開く</button>
+    <div class="modal fade" id="scrollableModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">長い内容</h5>
+                </div>
+                <div class="modal-body">
+                    {% for i in range(30) %} <p>これはスクロール用の行 {{ i + 1 }} です。</p> {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    // トースト通知
+    function showToast() {
+        const toast = new bootstrap.Toast(document.getElementById('liveToast'));
+        toast.show();
+    }
+
+    // 2段階確認モーダル
+    function nextConfirm() {
+        const modal1 = bootstrap.Modal.getInstance(document.getElementById('confirmModal1'));
+        modal1.hide();
+        new bootstrap.Modal(document.getElementById('confirmModal2')).show();
+    }
+
+    function finalDelete() {
+        const modal2 = bootstrap.Modal.getInstance(document.getElementById('confirmModal2'));
+        modal2.hide();
+        alert("削除されました。");
+    }
+
+    // 非同期データ読み込み（モック用）
+    function loadModalData() {
+        const modal = new bootstrap.Modal(document.getElementById('ajaxModal'));
+        modal.show();
+        const body = document.getElementById('ajaxModalBody');
+        body.innerHTML = "データ読込中...";
+        setTimeout(() => {
+            body.innerHTML = "これはサーバーから取得したデータです（モック）。";
+        }, 1000);
+    }
+</script>
+
+{% endblock %}

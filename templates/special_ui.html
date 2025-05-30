@@ -1,0 +1,244 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container py-5">
+    <h1 class="mb-4">補助UI／特殊UI</h1>
+    <!-- ✅ ローディング系 -->
+    <section class="mb-5">
+        <h2 class="h5">ローディングスピナー</h2>
+        <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">読み込み中...</span>
+        </div>
+    </section>
+    <section class="mb-5">
+        <h2 class="h6 text-muted">📘 スピナーとスケルトンの違い</h2>
+        <p><strong>ローディングスピナー</strong> は「裏で処理中」であることを明示します。ボタン押下やAPI通信中など、短時間の操作待機に使います。</p>
+        <p><strong>スケルトンUI</strong> は「ここに何か出る予定」を視覚的に伝えるもので、レイアウトを先に出しておきたいときに使います。</p>
+    </section>
+    <section class="mb-5">
+        <h2 class="h5">スケルトンプレースホルダー</h2>
+        <div class="placeholder-glow">
+            <span class="placeholder col-12 mb-2"></span>
+            <span class="placeholder col-8"></span>
+        </div>
+    </section>
+    <section class="mb-5">
+        <h2 class="h5">応用：コンテンツ読み込み＆スピナー</h2>
+        <button class="btn btn-outline-primary" onclick="simulateContentLoad()">コンテンツを読み込む</button>
+        <div class="text-center my-4" id="loadingContent">
+            <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">読み込み中...</span>
+            </div>
+        </div>
+        <div class="d-none" id="realContent">
+            <div class="card">
+                <div class="card-body">
+                    🎉 本物のコンテンツが読み込まれました！
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ✅ 進捗・手順系 -->
+    <section class="mb-5">
+        <h2 class="h5">進捗バー</h2>
+        <div class="progress mb-2">
+            <div class="progress-bar" style="width: 65%;">65%</div>
+        </div>
+        <button class="btn btn-outline-primary btn-sm" onclick="updateProgress()">進捗更新</button>
+    </section>
+    <section class="mb-5">
+        <h2 class="h5">ステップインジケーター制御</h2>
+        <button class="btn btn-outline-dark btn-sm mb-2" onclick="advanceStep()">次のステップ</button>
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <div class="step circle bg-primary text-white" id="step1">1</div>
+            <hr class="flex-fill mx-2 border-primary border-2" />
+            <div class="step circle bg-secondary text-white" id="step2">2</div>
+            <hr class="flex-fill mx-2 border-secondary" />
+            <div class="step circle bg-light border" id="step3">3</div>
+        </div>
+    </section>
+    <!-- ✅ 日付・切替UI -->
+    <section class="mb-5">
+        <h2 class="h5">カレンダーUI（さまざまな日付選択）</h2>
+        <label class="form-label">単日選択：</label>
+        <input class="form-control w-auto mb-3" type="date" />
+        <label class="form-label">日時選択（datetime-local）：</label>
+        <input class="form-control w-auto mb-3" type="datetime-local" />
+        <label class="form-label">月選択（month）：</label>
+        <input class="form-control w-auto mb-3" type="month" />
+        <label class="form-label">週選択（week）：</label>
+        <input class="form-control w-auto mb-3" type="week" />
+    </section>
+    <section class="mb-5">
+        <h2 class="h5">タブ切り替え</h2>
+        <ul class="nav nav-tabs" id="tabExample" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" data-bs-toggle="tab" href="#tab1">タブ1</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#tab2">タブ2</a>
+            </li>
+        </ul>
+        <div class="tab-content p-3 border border-top-0">
+            <div class="tab-pane fade show active" id="tab1">タブ1の内容です。</div>
+            <div class="tab-pane fade" id="tab2">タブ2の内容です。</div>
+        </div>
+    </section>
+    <h2 class="h5">チャート応用：データ更新</h2>
+    <button class="btn btn-outline-success btn-sm mb-2" onclick="updateChartData()">ランダム更新</button>
+    <!-- ✅ チャートUI -->
+    <section class="mb-5">
+        <h2 class="h5">チャート表示</h2>
+        <canvas height="150" id="barChart"></canvas>
+        <canvas class="mt-3" height="150" id="pieChart"></canvas>
+    </section>
+
+    <section class="mb-5">
+        <!-- ✅ チャート応用：リアルタイムデータ -->
+        <section class="mb-5">
+            <h2 class="h5">チャート応用：リアルタイムデータ</h2>
+            <p class="text-muted">一定間隔で自動更新されるチャート（擬似APIによるデータ変動）</p>
+            <canvas height="100" id="realtimeChart"></canvas>
+        </section>
+
+    </section>
+    <!-- ✅ リアルタイムチャート（疑似API＆自動更新） -->
+
+</div>
+<style>
+    .step.circle {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        line-height: 40px;
+        text-align: center;
+    }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/chart.js">
+    function initRealtimeChart() {
+        const ctx = document.getElementById('realtimeChart').getContext('2d');
+        realtimeChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: Array.from({ length: 10 }, (_, i) => i + 1),
+                datasets: [{
+                    label: 'リアルタイム値',
+                    data: Array(10).fill(0),
+                    borderColor: 'rgba(75,192,192,1)',
+                    tension: 0.4
+                }]
+            }
+        });
+
+        setInterval(() => {
+            const data = realtimeChart.data.datasets[0].data;
+            data.shift();
+            data.push(Math.floor(Math.random() * 100));
+            realtimeChart.update();
+        }, 2000);
+    }
+
+</script>
+<script>
+    let chartRef;
+    let stepIndex = 1;
+
+    function simulateContentLoad() {
+        const loading = document.getElementById('loadingContent');
+        const content = document.getElementById('realContent');
+        loading.classList.remove('d-none');
+        content.classList.add('d-none');
+        setTimeout(() => {
+            loading.classList.add('d-none');
+            content.classList.remove('d-none');
+        }, 2000);
+    }
+
+    function updateProgress() {
+        const bar = document.querySelector(".progress-bar");
+        let newValue = Math.floor(Math.random() * 100);
+        bar.style.width = newValue + "%";
+        bar.textContent = newValue + "%";
+    }
+
+    function advanceStep() {
+        stepIndex++;
+        if (stepIndex > 3) stepIndex = 1;
+        for (let i = 1; i <= 3; i++) {
+            const el = document.getElementById('step' + i);
+            if (i < stepIndex) {
+                el.className = 'step circle bg-primary text-white';
+            } else if (i === stepIndex) {
+                el.className = 'step circle bg-secondary text-white';
+            } else {
+                el.className = 'step circle bg-light border';
+            }
+        }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+        initRealtimeChart();
+        const barCtx = document.getElementById('barChart').getContext('2d');
+        chartRef = new Chart(barCtx, {
+            type: 'bar',
+            data: {
+                labels: ['A', 'B', 'C', 'D'],
+                datasets: [{
+                    label: 'スコア',
+                    data: [12, 19, 3, 5],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.6)',
+                        'rgba(54, 162, 235, 0.6)',
+                        'rgba(255, 206, 86, 0.6)',
+                        'rgba(75, 192, 192, 0.6)'
+                    ]
+                }]
+            }
+        });
+
+        const pieCtx = document.getElementById('pieChart').getContext('2d');
+        new Chart(pieCtx, {
+            type: 'pie',
+            data: {
+                labels: ['赤', '青', '黄'],
+                datasets: [{
+                    data: [10, 20, 30],
+                    backgroundColor: ['#dc3545', '#0d6efd', '#ffc107']
+                }]
+            }
+        });
+    });
+
+    function updateChartData() {
+        const newData = Array.from({ length: 4 }, () => Math.floor(Math.random() * 100) + 1);
+        chartRef.data.datasets[0].data = newData;
+        chartRef.update();
+    }
+
+    let realtimeChart;
+
+    function initRealtimeChart() {
+        const ctx = document.getElementById('realtimeChart').getContext('2d');
+        realtimeChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: Array.from({ length: 10 }, (_, i) => i + 1),
+                datasets: [{
+                    label: 'リアルタイム値',
+                    data: Array(10).fill(0),
+                    borderColor: 'rgba(75,192,192,1)',
+                    tension: 0.4
+                }]
+            }
+        });
+
+        setInterval(() => {
+            const data = realtimeChart.data.datasets[0].data;
+            data.shift();
+            data.push(Math.floor(Math.random() * 100));
+            realtimeChart.update();
+        }, 2000);
+    }
+
+</script>
+
+{% endblock %}

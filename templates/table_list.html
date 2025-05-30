@@ -1,0 +1,509 @@
+{% extends "base.html" %}
+{% block title %}表・リストUIサンプル{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <h1 class="mb-4">表・リスト UI サンプル</h1>
+
+    <!-- ✅ シンプルなテーブル -->
+    <section class="mb-5">
+        <h2 class="h5">シンプルなテーブル</h2>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>氏名</th>
+                    <th>メール</th>
+                    <th>所属</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>山田 太郎</td>
+                    <td>yamada@example.com</td>
+                    <td>営業部</td>
+                </tr>
+                <tr>
+                    <td>佐藤 花子</td>
+                    <td>sato@example.com</td>
+                    <td>開発部</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- ✅ 並び替え可能なテーブル（疑似） -->
+    <section class="mb-5">
+        <h2 class="h5">並び替え付きテーブル（ヘッダクリック）</h2>
+        <table class="table table-hover" id="sortable-table">
+            <thead>
+                <tr>
+                    <th onclick="sortTable(0)" style="cursor:pointer;">商品名</th>
+                    <th onclick="sortTable(1)" style="cursor:pointer;">価格</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>りんご</td>
+                    <td>100</td>
+                </tr>
+                <tr>
+                    <td>バナナ</td>
+                    <td>80</td>
+                </tr>
+                <tr>
+                    <td>みかん</td>
+                    <td>120</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- ✅ 横スクロール＋固定列 -->
+    <section class="mb-5">
+        <h2 class="h5">横スクロールテーブル（固定列風）</h2>
+        <div class="table-responsive">
+            <table class="table table-bordered w-100" style="min-width: 800px;">
+                <thead>
+                    <tr>
+                        <th>日付</th>
+                        <th>項目1</th>
+                        <th>項目2</th>
+                        <th>項目3</th>
+                        <th>項目4</th>
+                        <th>項目5</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>2025-05-01</td>
+                        <td>A</td>
+                        <td>B</td>
+                        <td>C</td>
+                        <td>D</td>
+                        <td>E</td>
+                    </tr>
+                    <tr>
+                        <td>2025-05-02</td>
+                        <td>F</td>
+                        <td>G</td>
+                        <td>H</td>
+                        <td>I</td>
+                        <td>J</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- ✅ ボタン・リンク・アイコン付き -->
+    <section class="mb-5">
+        <h2 class="h5">テーブル内にアクションボタン</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ユーザー</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>user1</td>
+                    <td>
+                        <a href="#" class="btn btn-sm btn-info">詳細</a>
+                        <button class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i></button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>user2</td>
+                    <td>
+                        <a href="#" class="btn btn-sm btn-info">詳細</a>
+                        <button class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- ✅ チェック付きリスト -->
+    <section class="mb-5">
+        <h2 class="h5">チェック付きリスト</h2>
+        <ul class="list-group">
+            <li class="list-group-item">
+                <input class="form-check-input me-1" type="checkbox" value="">
+                オプションA
+            </li>
+            <li class="list-group-item">
+                <input class="form-check-input me-1" type="checkbox" value="">
+                オプションB
+            </li>
+            <li class="list-group-item">
+                <input class="form-check-input me-1" type="checkbox" value="">
+                オプションC
+            </li>
+        </ul>
+    </section>
+
+    <!-- ✅ カード型リスト -->
+    <section class="mb-5">
+        <h2 class="h5">カード型リスト</h2>
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+            <div class="col">
+                <div class="card">
+                    <img src="https://via.placeholder.com/400x200" class="card-img-top" alt="画像">
+                    <div class="card-body">
+                        <h5 class="card-title">アイテムA</h5>
+                        <p class="card-text">これはカード型のリストアイテムです。</p>
+                        <a href="#" class="btn btn-primary btn-sm">見る</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <img src="https://via.placeholder.com/400x200" class="card-img-top" alt="画像">
+                    <div class="card-body">
+                        <h5 class="card-title">アイテムB</h5>
+                        <p class="card-text">説明文が入ります。カードはレスポンシブ対応です。</p>
+                        <a href="#" class="btn btn-primary btn-sm">見る</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ✅ 状態バッジ付きテーブル -->
+    <section class="mb-5">
+        <h2 class="h5">状態バッジ付きテーブル</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>案件名</th>
+                    <th>ステータス</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>プロジェクトA</td>
+                    <td><span class="badge bg-success">完了</span></td>
+                </tr>
+                <tr>
+                    <td>プロジェクトB</td>
+                    <td><span class="badge bg-warning text-dark">進行中</span></td>
+                </tr>
+                <tr>
+                    <td>プロジェクトC</td>
+                    <td><span class="badge bg-danger">失敗</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- ✅ 進捗バー付き -->
+    <section class="mb-5">
+        <h2 class="h5">進捗バー付きテーブル</h2>
+        <table class="table align-middle">
+            <thead>
+                <tr>
+                    <th>タスク</th>
+                    <th>進捗状況</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>タスク1</td>
+                    <td>
+                        <div class="progress">
+                            <div class="progress-bar bg-success" style="width: 90%;">90%</div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>タスク2</td>
+                    <td>
+                        <div class="progress">
+                            <div class="progress-bar bg-warning text-dark" style="width: 50%;">50%</div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>タスク3</td>
+                    <td>
+                        <div class="progress">
+                            <div class="progress-bar bg-danger" style="width: 20%;">20%</div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- ✅ 行クリックで展開（アコーディオン風） -->
+    <section class="mb-5">
+        <h2 class="h5">詳細展開付きテーブル（クリックで表示）</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>製品</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-bs-toggle="collapse" data-bs-target="#detail1" aria-expanded="false" style="cursor: pointer;">
+                    <td>商品A</td>
+                    <td>▶ クリックで詳細</td>
+                </tr>
+                <tr class="collapse" id="detail1">
+                    <td colspan="2" class="bg-light">
+                        <strong>説明：</strong> 商品Aは高性能なアイテムで、様々な用途に活用できます。
+                    </td>
+                </tr>
+                <tr data-bs-toggle="collapse" data-bs-target="#detail2" aria-expanded="false" style="cursor: pointer;">
+                    <td>商品B</td>
+                    <td>▶ クリックで詳細</td>
+                </tr>
+                <tr class="collapse" id="detail2">
+                    <td colspan="2" class="bg-light">
+                        <strong>説明：</strong> 商品Bは軽量設計で、モバイル対応に最適です。
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- ✅ レスポンシブテーブル（モバイル表示用の縦並び） -->
+    <section class="mb-5">
+        <h2 class="h5">レスポンシブ対応縦並びテーブル</h2>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead class="d-none d-md-table-header-group">
+                    <tr>
+                        <th>名前</th>
+                        <th>役職</th>
+                        <th>電話番号</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-label="名前"><strong>田中 一郎</strong></td>
+                        <td data-label="役職">マネージャー</td>
+                        <td data-label="電話番号">03-1234-5678</td>
+                    </tr>
+                    <tr>
+                        <td data-label="名前"><strong>鈴木 次郎</strong></td>
+                        <td data-label="役職">エンジニア</td>
+                        <td data-label="電話番号">03-9876-5432</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+
+    <!-- ✅ ツールチップ付きセル -->
+    <section class="mb-5">
+        <h2 class="h5">ツールチップ付きテーブル</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>商品名</th>
+                    <th>価格</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td data-bs-toggle="tooltip" title="人気商品！">りんご</td>
+                    <td>100円</td>
+                </tr>
+                <tr>
+                    <td data-bs-toggle="tooltip" title="期間限定">メロン</td>
+                    <td>500円</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- ✅ コンパクトテーブル -->
+    <section class="mb-5">
+        <h2 class="h5">コンパクトテーブル（密表示）</h2>
+        <table class="table table-sm table-bordered">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>内容</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>テストA</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>テストB</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- ✅ アイコン＋名前のテーブル -->
+    <section class="mb-5">
+        <h2 class="h5">アイコン＋名前のテーブル</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ユーザー</th>
+                    <th>役職</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><i class="fas fa-user-circle me-2"></i> 山田 太郎</td>
+                    <td>開発部</td>
+                </tr>
+                <tr>
+                    <td><i class="fas fa-user-circle me-2"></i> 佐藤 花子</td>
+                    <td>営業部</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- ✅ 行選択で背景ハイライト -->
+    <section class="mb-5">
+        <h2 class="h5">チェック付き選択行ハイライト</h2>
+        <table class="table" id="highlight-table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>項目</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="checkbox" onchange="highlightRow(this)"></td>
+                    <td>項目A</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" onchange="highlightRow(this)"></td>
+                    <td>項目B</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- ✅ インライン編集行 -->
+    <!-- ✅ インライン編集行 -->
+    <section class="mb-5">
+        <h2 class="h5">インライン編集テーブル</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>項目</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <span class="display-text">編集可能な値</span>
+                        <input type="text" class="form-control form-control-sm edit-input d-none" value="編集可能な値">
+                    </td>
+                    <td>
+                        <button class="btn btn-sm btn-primary" onclick="toggleEdit(this)">編集</button>
+                        <button class="btn btn-sm btn-success d-none" onclick="saveEdit(this)">保存</button>
+                        <button class="btn btn-sm btn-secondary d-none" onclick="cancelEdit(this)">取消</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <script>
+        function toggleEdit(btn) {
+            const row = btn.closest("tr");
+            row.querySelector(".display-text").classList.add("d-none");
+            row.querySelector(".edit-input").classList.remove("d-none");
+            btn.classList.add("d-none");
+            row.querySelector(".btn-success").classList.remove("d-none");
+            row.querySelector(".btn-secondary").classList.remove("d-none");
+        }
+
+        function saveEdit(btn) {
+            const row = btn.closest("tr");
+            const input = row.querySelector(".edit-input");
+            const text = row.querySelector(".display-text");
+            text.textContent = input.value;
+            toggleBack(row);
+        }
+
+        function cancelEdit(btn) {
+            const row = btn.closest("tr");
+            const input = row.querySelector(".edit-input");
+            const text = row.querySelector(".display-text");
+            input.value = text.textContent;
+            toggleBack(row);
+        }
+
+        function toggleBack(row) {
+            row.querySelector(".display-text").classList.remove("d-none");
+            row.querySelector(".edit-input").classList.add("d-none");
+            row.querySelector(".btn-primary").classList.remove("d-none");
+            row.querySelector(".btn-success").classList.add("d-none");
+            row.querySelector(".btn-secondary").classList.add("d-none");
+        }
+    </script>
+
+
+    <!-- ✅ クロス表（2軸見出し） -->
+    <section class="mb-5">
+        <h2 class="h5">クロス集計表</h2>
+        <table class="table table-bordered text-center">
+            <thead>
+                <tr>
+                    <th rowspan="2">商品</th>
+                    <th colspan="2">2025年</th>
+                </tr>
+                <tr>
+                    <th>上期</th>
+                    <th>下期</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>りんご</td>
+                    <td>120</td>
+                    <td>130</td>
+                </tr>
+                <tr>
+                    <td>みかん</td>
+                    <td>90</td>
+                    <td>100</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- ✅ 行選択用JS -->
+    <script>
+        function highlightRow(checkbox) {
+            const row = checkbox.closest("tr");
+            row.classList.toggle("table-active", checkbox.checked);
+        }
+    </script>
+
+</div>
+
+<script>
+    function sortTable(col) {
+        const table = document.getElementById("sortable-table");
+        const rows = Array.from(table.rows).slice(1);
+        const asc = table.dataset.sortAsc !== "true";
+        rows.sort((a, b) => {
+            const valA = a.cells[col].innerText;
+            const valB = b.cells[col].innerText;
+            return asc ? valA.localeCompare(valB, 'ja') : valB.localeCompare(valA, 'ja');
+        });
+        rows.forEach(row => table.tBodies[0].appendChild(row));
+        table.dataset.sortAsc = asc;
+    }
+</script>
+{% endblock %}

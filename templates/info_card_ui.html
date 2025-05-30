@@ -1,0 +1,135 @@
+
+{% extends 'base.html' %}
+{% block content %}
+<div class="container py-5">
+    <h1 class="mb-4">情報表示・カード・視覚部品 UI</h1>
+
+    <!-- ✅ カード表示 -->
+    <section class="mb-5">
+        <h2 class="h5">カード表示（タイトル・本文・画像）</h2>
+    <p>カードは、視覚的に情報を区切って表示するコンポーネントです。<br>
+    ニュース記事、商品、サービス紹介などに利用されます。</p>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <img src="https://via.placeholder.com/400x200" class="card-img-top" alt="画像1">
+                    <div class="card-body">
+                        <h5 class="card-title">ニュース記事</h5>
+                        <p class="card-text">これは簡単なニュース記事の要約テキストです。</p>
+                        <a href="#" class="btn btn-outline-primary btn-sm">続きを読む</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <img src="https://via.placeholder.com/400x200" class="card-img-top" alt="画像2">
+                    <div class="card-body">
+                        <h5 class="card-title">商品紹介</h5>
+                        <p class="card-text">このカードは商品の説明や販売ボタンに使えます。</p>
+                        <button class="btn btn-success btn-sm">カートに追加</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ✅ プロフィールカード -->
+    <section class="mb-5">
+        <h2 class="h5">プロフィールカード</h2>
+    <p>ユーザーのアイコン、名前、職業などを表示するためのカードです。<br>
+    SNSやダッシュボードでのプロフィール表示によく使われます。</p>
+        <div class="card p-3 mb-2" style="max-width: 20rem;">
+            <div class="d-flex align-items-center">
+                <img src="https://via.placeholder.com/64" class="rounded-circle me-3" alt="プロフィール">
+                <div>
+                    <h6 class="mb-0">山田 太郎</h6>
+                    <small class="text-muted">Webデザイナー・東京</small>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ✅ タグ表示 -->
+    <section class="mb-5">
+        <h2 class="h5">タグ表示（ラベル的用途）</h2>
+    <p>タグ（Badge）は、属性やカテゴリ、状態を示す小さなラベルです。<br>
+    フィルタリング、分類、進行状況の表示に使われます。</p>
+        <p>カテゴリ: <span class="badge bg-primary">開発</span> <span class="badge bg-secondary">デザイン</span> <span class="badge bg-info text-dark">UI/UX</span></p>
+        <p>状態: <span class="badge bg-warning text-dark">作業中</span> <span class="badge bg-success">完了</span></p>
+    </section>
+
+    <!-- ✅ 通知バッジ -->
+    <section class="mb-5">
+        <h2 class="h5">バッジ（通知・未読数）</h2>
+    <p>バッジは、ボタンやアイコンの上に数値や印を重ねて表示するUIです。<br>
+    メールや通知の未読数、更新の有無などを知らせる用途に適しています。</p>
+        <button type="button" class="btn btn-secondary position-relative">
+            メール
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                4
+                <span class="visually-hidden">未読メッセージ</span>
+            </span>
+        </button>
+        <button type="button" class="btn btn-outline-dark position-relative ms-2">
+            通知
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning text-dark">
+                99+
+            </span>
+        </button>
+    </section>
+
+    <!-- ✅ ツールチップ・ポップオーバー -->
+<section class="mb-5">
+    <h2 class="h5">ツールチップとポップオーバーとは？</h2>
+    <p><strong>ツールチップ</strong>はマウスホバーや長押しで表示される小さなヒントです。<br>
+    <strong>ポップオーバー</strong>はクリックで表示され、タイトルと本文を含む詳しい補足情報を表示します。</p>
+
+    <h6 class="mt-4">使い分け</h6>
+    <ul>
+        <li>🔍 ツールチップ：一言ヒントやボタン説明</li>
+        <li>📘 ポップオーバー：補足テキストや確認メッセージ</li>
+    </ul>
+
+    <div class="mt-3">
+        <button type="button" class="btn btn-outline-dark me-2" data-bs-toggle="tooltip" title="これはヒントです！">
+            ツールチップを見る
+        </button>
+        <button type="button" class="btn btn-outline-dark" data-bs-toggle="popover" title="ポップオーバーの見出し" data-bs-content="クリックで補足情報を表示します。">
+            ポップオーバー表示
+        </button>
+    </div>
+</section>
+<!-- ✅ ツールチップ・ポップオーバー -->
+    <section class="mb-5">
+        <h2 class="h5">ツールチップ・ポップオーバー</h2>
+        <button type="button" class="btn btn-outline-dark me-2" data-bs-toggle="tooltip" title="これはヒントです！">ツールチップを見る</button>
+        <button type="button" class="btn btn-outline-dark" data-bs-toggle="popover" title="ポップオーバーの見出し" data-bs-content="クリックで補足情報を表示します。">ポップオーバー表示</button>
+    </section>
+
+    <!-- ✅ アコーディオン -->
+    <section class="mb-5">
+        <h2 class="h5">アコーディオン（開閉式情報）</h2>
+    <p>アコーディオンは、情報を折りたたんで表示・非表示を切り替えるUIです。<br>
+    よくある質問（FAQ）や設定項目の展開などに利用されます。</p>
+        <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+                        よくある質問：アプリの料金は？
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        基本プランは無料で提供されており、有料プランは月額980円から利用可能です。
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<script>
+document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(el => new bootstrap.Tooltip(el));
+document.querySelectorAll('[data-bs-toggle="popover"]').forEach(el => new bootstrap.Popover(el));
+</script>
+{% endblock %}
